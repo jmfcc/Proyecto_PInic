@@ -76,7 +76,9 @@ class indexRoutes{
             }
             //let resp = {usuario:'Jaime', contrasen: 12345678};
         });
-        this.router.post('/loginpost', verifyToken, (req,res) => {
+
+        //Metodo de prueba para validar el token de autenticacion jwt
+        this.router.post('/loggedIn', verifyToken, (req,res) => {
             
             //jwt.verify(req.token, 'secretkey', (error:any, authData:any)=>{
             jwt.verify(req.body.token, 'secretkey', (error:any, authData:any)=>{
@@ -95,7 +97,7 @@ class indexRoutes{
         });
 
         // Authorization: Bearer <token>
-        function verifyToken(req:any,res:any,next:any){
+        function verifyToken(req:any,res:any,next:any){ //depende del formato de envio del front
             const bearerHeader = req.body.token;
             //const bearerHeader = req.headers['authorization'];
             //console.log(bearerHeader)
