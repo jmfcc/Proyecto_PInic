@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-4 offset-md-2">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="login-header">REGISTRO</h2>
+
+                <form #frmRegister="ngForm" (ngSubmit)="onRegis(frmRegister)">
+
+                    <div class="form-group">
+                        <input name = "usuario" placeholder="CARNE" type="text" ngModel class="form-control" autofocus required>
+                    </div>
+                    <div class="form-group">
+                        <input name = "contrasenia" placeholder="PASSWORD" type="password" class="form-control" ngModel required>
+                    </div>
+                    <div class="form-group">
+                        <input name = "nombres" placeholder="NOMBRES" type="text" class="form-control" ngModel required>
+                    </div>
+                    <div class="form-group">
+                        <input name = "apellidos" placeholder="APELLIDOS" type="text" class="form-control" ngModel required>
+                    </div>
+                    <div class="form-group">
+                        <input name = "correo" placeholder="CORREO" type="email" class="form-control" ngModel required>
+                    </div>
+                    <button class="btn btn-success btn-block" type="submit">
+                        REGISTRARSE
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
