@@ -3,12 +3,11 @@ var jwt = require ('jsonwebtoken');
 var mssql = require('mssql');
 
 var config = {
-    server: 'localhost', //update me
-    //database: 'PELICULAS',  // Si hay falla de conexión se especifica la db a usar
+    server: 'localhost',
     host: 'localhost',
-    user: 'admsc',   // la base de datos a usar ya esta especificado en la config del usuario
-    password: 'Bu7n03Cc',
-    port: 1433
+    user: 'alexwgd', //Este debe ser su usuario
+    password: '1234', // Esta debe ser su contraseña
+    port: 1433 
 };
 
 class indexRoutes{
