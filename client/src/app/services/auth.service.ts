@@ -14,20 +14,10 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
-// register(user: UserI): Observable<JwtResponseI> {
-//   return this.httpClient.post<JwtResponseI>("http://localhost:3000/sys/registr",
-//     user).pipe(tap(
-//       (res: JwtResponseI) => {
-//         if (res) {
-//           //guardar el token
-//           this.saveToken(res.dataUser.accesTkn, res.dataUser.expiresIn)
-//         }
-//       })
-//     );
-// }
   register(user: UserI){
     return this.httpClient.post("http://localhost:3000/sys/registr", user);
   }
+
 
   login(user: UserI): Observable<JwtResponseI> {
     return this.httpClient.post<JwtResponseI>("http://localhost:3000/sys/login",
@@ -64,4 +54,9 @@ export class AuthService {
   loggedIn(){
     return !!localStorage.getItem('ACCESS_TOKEN')
   }
+
+ /****************** PUBLICACIONES ***********************/
+
+ 
+  
 }

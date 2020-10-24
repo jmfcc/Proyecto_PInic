@@ -5,6 +5,9 @@ import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { HomeComponent } from './home/home.component';
 
+/************** Componente de publicaciones  ****************/
+import {VerPublicacionComponent} from './publ/ver-publicacion/ver-publicacion.component';
+
 import { AuthGuard } from './auth.guard'
 
 const routes: Routes = [
@@ -20,6 +23,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'ver-publicacion',
+    component: VerPublicacionComponent
   }
 ];
 

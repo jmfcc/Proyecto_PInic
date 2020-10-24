@@ -10,12 +10,20 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
+import { InicioNavbarComponent } from './navbar/inicio-navbar/inicio-navbar.component';
+import { HomeNavbarComponent } from './navbar/home-navbar/home-navbar.component';
+import { NuevaPublicacionComponent } from './publ/nueva-publicacion/nueva-publicacion.component';
+import { VerPublicacionComponent } from './publ/ver-publicacion/ver-publicacion.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegistroComponent,
     HomeComponent,
+    InicioNavbarComponent,
+    HomeNavbarComponent,
+    NuevaPublicacionComponent,
+    VerPublicacionComponent,
   ],
   imports: [
     CommonModule,
