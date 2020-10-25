@@ -7,14 +7,21 @@ import { HomeComponent } from './home/home.component';
 
 /************** Componente de publicaciones  ****************/
 import {VerPublicacionComponent} from './publ/ver-publicacion/ver-publicacion.component';
+import {NuevaPublicacionComponent} from './publ/nueva-publicacion/nueva-publicacion.component'
+
 
 import { AuthGuard } from './auth.guard'
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo:'/login',
+    pathMatch: 'full'
+  },
+  {
     path: 'home',
     component: HomeComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'register',
@@ -27,6 +34,10 @@ const routes: Routes = [
   {
     path: 'ver-publicacion',
     component: VerPublicacionComponent
+  },
+  {
+    path: 'nueva-publicacion',
+    component: NuevaPublicacionComponent
   }
 ];
 

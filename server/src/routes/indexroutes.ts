@@ -18,6 +18,7 @@ class indexRoutes{
     }
 
     config():void{
+        
         this.router.post('/login', async function(req,res){
             try{
                 let resp=req.body;

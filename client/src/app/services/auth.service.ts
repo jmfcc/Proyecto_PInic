@@ -12,6 +12,7 @@ export class AuthService {
   authSubject = new BehaviorSubject(false);
   private token: string;
 
+
   constructor(private httpClient: HttpClient) { }
 
   register(user: UserI){
@@ -24,8 +25,6 @@ export class AuthService {
       user).pipe(tap(
         (res: JwtResponseI) => {
           if (res) {
-            //guardar el token
-            //console.log(res);
             this.saveToken(res.dataUser.accesTkn, res.dataUser.expiresIn);
           }
         }
@@ -51,12 +50,28 @@ export class AuthService {
     return this.token;
   }
   
+  
   loggedIn(){
     return !!localStorage.getItem('ACCESS_TOKEN')
   }
 
  /****************** PUBLICACIONES ***********************/
 
+  obtenerCursos(){
+    return this.httpClient.get('http://localhost:3000/alex/obtener-cursos');
+  }
+
+  obtenerCatedraticos(){
+    return this.httpClient.get('http://localhost:3000/alex/obtener-catedraticos');
+  }
+
+  obtenerCursoCatedratico(){
+    return this.httpClient.get('http://localhost:3000/alex/obtener-curso-catedratico')
+  }
+
+  obtenerPublicaciones(){
+    return this.httpClient.get('http://localhost:3000/alex/obtener-publicaciones');
+  }
  
   
 }
