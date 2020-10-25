@@ -4,10 +4,10 @@ var mssql = require('mssql');
 
 var config = {
     server: 'localhost', //update me
-    //database: 'PELICULAS',  // Si hay falla de conexión se especifica la db a usar
+    database: 'SCUSAC',  // Si hay falla de conexión se especifica la db a usar
     host: 'localhost',
-    user: 'admsc',   // la base de datos a usar ya esta especificado en la config del usuario
-    password: 'Bu7n03Cc',
+    user: 'sa',   // la base de datos a usar ya esta especificado en la config del usuario
+    password: 'base789',
     port: 1433
 };
 
@@ -34,7 +34,7 @@ class indexRoutes{
                         var req = new mssql.Request(con);
                         if(err){
                             res.send({"mensaje": "Algo no salio bien"})
-                            //console.log(err);
+                            console.log(err);
                             //return;
                         }
                         req.query(cadena,function(err:any,recordset:any){

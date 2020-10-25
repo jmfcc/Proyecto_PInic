@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { HomeComponent } from './home/home.component';
+import { VerificarCorreoComponent } from './verificar-correo/verificar-correo.component';
 
 import { AuthGuard } from './auth.guard'
 
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'verificar-email',
+    component: VerificarCorreoComponent
   }
 ];
 

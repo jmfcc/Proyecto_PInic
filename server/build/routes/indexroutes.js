@@ -14,10 +14,10 @@ var jwt = require('jsonwebtoken');
 var mssql = require('mssql');
 var config = {
     server: 'localhost',
-    //database: 'PELICULAS',  // Si hay falla de conexión se especifica la db a usar
+    database: 'SCUSAC',
     host: 'localhost',
-    user: 'admsc',
-    password: 'Bu7n03Cc',
+    user: 'sa',
+    password: 'base789',
     port: 1433
 };
 class indexRoutes {
@@ -42,7 +42,7 @@ class indexRoutes {
                             var req = new mssql.Request(con);
                             if (err) {
                                 res.send({ "mensaje": "Algo no salio bien" });
-                                //console.log(err);
+                                console.log(err);
                                 //return;
                             }
                             req.query(cadena, function (err, recordset) {

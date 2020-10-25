@@ -15,7 +15,7 @@ import { AuthGuard } from './auth.guard';
   declarations: [
     LoginComponent,
     RegistroComponent,
-    HomeComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

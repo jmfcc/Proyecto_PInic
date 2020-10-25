@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-md-4 offset-md-2">
+        <div class="card">
+            <div class="card-body">
+
+                <div *ngIf="mensaje" class="alert alert-warning alert-dismissible fade show" role="alert">
+                    usuario no encontrado :( 
+                    <button (click)="cerrarMensaje()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                <h2 class="login-header">VERIFICAR DATOS</h2>
+                <form #frmeEmail="ngForm" (ngSubmit)="verificar(frmeEmail)">
+                    <div class="form-group">
+                        <input name = "usuario" placeholder="CARNE" type="text" ngModel class="form-control" autofocus required [readonly]=soloLectura>
+                    </div>
+                    <div class="form-group">
+                        <input name = "correo" placeholder="CORREO" type="email" class="form-control" ngModel required [readonly]=soloLectura>
+                    </div>
+                    <button class="btn btn-success btn-block" type="submit">
+                        Verificar
+                    </button>
+                </form>
+                <br><br>
+                <form *ngIf="usuarioVerificado" #formCambiarContrasenia="ngForm" (ngSubmit)="cambiarContrasenia(formCambiarContrasenia)">
+                    <div class="form-group">
+                        <input name = "contrasenia" placeholder="NUEVA CONTRASEÑA" type="password" ngModel class="form-control" autofocus required>
+                    </div>
+                    <div class="form-group">
+                        <input name = "contrasenia" placeholder="CONFIRMAR CONTRASEÑA" type="password" class="form-control" ngModel required>
+                    </div>
+                    <button class="btn btn-success btn-block" type="submit">
+                        Cambiar contrasenia 
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -64,4 +64,12 @@ export class AuthService {
   loggedIn(){
     return !!localStorage.getItem('ACCESS_TOKEN')
   }
+
+  verificarCorreo(user: UserI){
+    return this.httpClient.post("http://localhost:3000/sys/user/verificar", user);
+  }
+
+  actualizarContrasenia(user:UserI){
+    return this.httpClient.post("http://localhost:3000/sys/user/actualizarContrasenia", user);
+  }
 }
