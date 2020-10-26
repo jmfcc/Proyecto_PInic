@@ -4,6 +4,7 @@ import { UserI } from '../models/user';
 import { JwtResponseI } from '../models/jwt-response';
 import { tap } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { Publicacion } from '../models/publicacion';
 
 @Injectable()
 
@@ -71,6 +72,14 @@ export class AuthService {
 
   obtenerPublicaciones(){
     return this.httpClient.get('http://localhost:3000/alex/obtener-publicaciones');
+  }
+
+  obtenerUsuario(){
+    return this.httpClient.post('http://localhost:3000/alex/get-usuario',{"token":this.getToken()});
+  }
+
+  crearPublicacion(publicacion:Publicacion){
+    return this.httpClient.post("http://localhost:3000/alex/crear-publicacion", publicacion);
   }
  
   

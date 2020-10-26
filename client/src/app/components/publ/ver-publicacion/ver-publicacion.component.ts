@@ -8,6 +8,7 @@ import {AuthService} from '../../../services/auth.service';
 })
 export class VerPublicacionComponent implements OnInit {
   publicaciones:any = [];
+  
   cursos:boolean = true;
   catedraticos:boolean = true;
 

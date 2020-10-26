@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../../services/auth.service';
 import {JwtResponseI} from '../../../models/jwt-response';
+import { Router} from '@angular/router';
+import { Publicacion } from 'src/app/models/publicacion';
 
 @Component({
   selector: 'app-nueva-publicacion',
@@ -14,9 +16,16 @@ export class NuevaPublicacionComponent implements OnInit {
   tipo:number = 0;
   selectedOption: string;
   mensaje: string;
-  usuario: string;
+  token: string;
 
-  constructor(private authService:AuthService ) { 
+  publicacion:Publicacion={
+    mensaje: "",
+    tipo: 0,
+    codigo: "",
+    token: ""
+  }
+
+  constructor(private authService:AuthService, private router:Router ) { 
 
   }
 
@@ -72,16 +81,29 @@ export class NuevaPublicacionComponent implements OnInit {
     );
   }
 
-  obtenerToken(){
-    this.usuario = this.authService.getToken().toString();
-  }
-
   publicar(){
-    this.obtenerToken();
+    this.token = this.authService.getToken();
     console.log(this.tipo);
     console.log(this.selectedOption);
     console.log(this.mensaje);
-    console.log(this.usuario);
+    console.log(this.token);
+
+    this.publicacion.mensaje=this.mensaje;
+    this.publicacion.tipo=this.tipo;
+    this.publicacion.codigo = this.selectedOption;
+    this.publicacion.token = this.token;
+
+    this.authService.crearPublicacion(this.publicacion).subscribe(
+      res=>{
+        console.log(res);
+        this.router.navigateByUrl("/components/ver-publicacion");
+        
+      },
+      err=>{
+        console.log(err);
+      }
+    );
+
   }
 
 }

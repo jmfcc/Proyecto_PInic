@@ -110,7 +110,7 @@ class alexRoutes {
         this.router.get('/obtener-publicaciones', function (req, res) {
             return __awaiter(this, void 0, void 0, function* () {
                 try {
-                    var cadena = "Select  pu.Mensaje as msj ,pu.CarneUsuario as usuario ,Format(pu.Fecha, 'dd-MM-yyyy') as fecha,cu.Codigo as codCurso, cu.Nombre as Curso, ca.Nombres as catNombre, ca.Apellidos as catApellid from Publicacion as pu Left Join CursoCatedratico cc on pu.CorrelCursoCated = cc.Correlativo Left Join Curso cu on cc.CodigoCurso = cu.Codigo or pu.CodigoCurso = cu.Codigo Left Join Catedratico ca on cc.idCatedratico = ca.id or pu.idCatedratico = ca.id order by pu.Fecha desc";
+                    var cadena = "Select  pu.Mensaje as msj ,pu.CarneUsuario as usuario ,Format(pu.Fecha, 'dd-MM-yyyy') as fecha,cu.Codigo as codCurso, cu.Nombre as Curso, ca.Nombres as catNombre, ca.Apellidos as catApellid from Publicacion as pu Left Join CursoCatedratico cc on pu.CorrelCursoCated = cc.Correlativo Left Join Curso cu on cc.CodigoCurso = cu.Codigo or pu.CodigoCurso = cu.Codigo Left Join Catedratico ca on cc.idCatedratico = ca.id or pu.idCatedratico = ca.id order by pu.Correlativo desc";
                     var con = new mssql.ConnectionPool(config);
                     con.connect(function (err) {
                         var req = new mssql.Request(con);
@@ -135,35 +135,54 @@ class alexRoutes {
             });
         });
         /******************** POSTS ***************************/
-        this.router.post('/nueva-publicacion', verifyToken, function name(req, res) {
-            return __awaiter(this, void 0, void 0, function* () {
-                jwt.verify(req.body.token, 'secretkey', (error, authData) => {
-                    if (error) {
-                        res.sendStatus(403);
+        this.router.post('/crear-publicacion', (req, res) => {
+            console.log(req.body);
+            jwt.verify(req.body.token, 'secretkey', (error, authData) => {
+                if (error) {
+                    res.sendStatus(403);
+                }
+                else {
+                    let dataPubli = {
+                        mensaje: req.body.mensaje,
+                        tipo: req.body.tipo,
+                        usuario: authData.resp.usuario,
+                        codigo: req.body.codigo
+                    };
+                    var cadena = "";
+                    if (dataPubli.tipo == 1) {
+                        cadena = "INSERT INTO Publicacion(Mensaje, Tipo, Fecha, CarneUsuario,CodigoCurso) VALUES ('" + dataPubli.mensaje + "', " + dataPubli.tipo + ", GETDATE(), " + dataPubli.usuario + ", " + dataPubli.codigo + ")";
                     }
-                    else {
-                        let datauser = {
-                            token: req.body.token,
-                            usuario: authData.resp.usuario,
-                            contrasenia: authData.resp.contrasenia
-                        };
-                        try {
-                        }
-                        catch (error) {
-                            console.log(error);
-                        }
+                    else if (dataPubli.tipo == 2) {
+                        cadena = "INSERT INTO Publicacion(Mensaje, Tipo, Fecha, CarneUsuario,idCatedratico) VALUES ('" + dataPubli.mensaje + "', " + dataPubli.tipo + ", GETDATE(), " + dataPubli.usuario + ", " + dataPubli.codigo + ")";
                     }
-                });
+                    else if (dataPubli.tipo == 3) {
+                        cadena = "INSERT INTO Publicacion(Mensaje, Tipo, Fecha, CarneUsuario,CorrelCursoCated) VALUES ('" + dataPubli.mensaje + "', " + dataPubli.tipo + ", GETDATE(), " + dataPubli.usuario + ", " + dataPubli.codigo + ")";
+                    }
+                    try {
+                        var con = new mssql.ConnectionPool(config);
+                        con.connect(function (err) {
+                            var req = new mssql.Request(con);
+                            if (err) {
+                                console.log(err);
+                                return;
+                            }
+                            req.query(cadena, function (err, recordset) {
+                                if (err) {
+                                    console.log(err);
+                                }
+                                else {
+                                    res.send(JSON.stringify(recordset));
+                                }
+                                con.close();
+                            });
+                        });
+                    }
+                    catch (Exception) {
+                        console.log(Exception);
+                    }
+                }
             });
         });
-        function verifyToken(req, res, next) {
-            const bearerHeader = req.body.token;
-            if (typeof bearerHeader !== 'undefined') {
-                const bearerToken = bearerHeader.split(" ")[1];
-                req.token = bearerToken;
-                next();
-            }
-        }
     }
 }
 const alexroutes = new alexRoutes();
