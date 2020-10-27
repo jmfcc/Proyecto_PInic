@@ -1,0 +1,58 @@
+<app-home-navbar></app-home-navbar>
+
+<div class="col-lg-8 col-md-7 offset-md-2">
+    <h1>Nueva Publicacion</h1>
+</div>
+<div class="col-lg-8 col-md-5 offset-md-2">
+    <div class="card border-secondary mb-3">
+        
+        <div class="col-lg-10 col-md-5">
+            <h3>Tipo de Publicacion</h3>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="tipoCurso" name="customRadio" class="custom-control-input" (click)="mostrarCursos()">
+                <label class="custom-control-label" for="tipoCurso">Curso</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+                <input type="radio" id="tipoCatedratico" name="customRadio" class="custom-control-input" (click)="mostrarCatedraticos()">
+                <label class="custom-control-label" for="tipoCatedratico">Catedratico</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+                <input type="radio" id="tipoCatedraticoCurso" name="customRadio" class="custom-control-input" (click)="mostrarCursoCatedraticos()">
+                <label class="custom-control-label" for="tipoCatedraticoCurso">Catedratico de un Curso</label>
+            </div>
+        </div>
+
+        
+
+        <div class="col-lg-9 col-md-3">
+            <div class="form-group">
+                <select class="custom-select" [(ngModel)]="selectedOption">
+                    <option *ngFor="let curso of cursos" 
+                        [value]="curso.Codigo">
+                        {{curso.Codigo}} {{curso.Nombre}}
+                    </option>
+                    <option *ngFor="let cat of catedraticos" 
+                        [value]="cat.id">
+                        {{cat.Nombres}} {{cat.Apellidos}}
+                    </option>
+                    <option *ngFor="let fuc of cursoCatedratico" 
+                        [value]="fuc.Correlativo">
+                        {{fuc.Codigo}} {{fuc.Nombre}}  —— {{fuc.Nombres}} {{fuc.Apellidos}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="col-lg-10 col-md-5">
+            <h3>Mensaje</h3>
+            <textarea class="form-control" id="mensaje" rows="4" [(ngModel)]="mensaje"></textarea>
+            <br>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="publicar()">Publicar</button>
+            <br>
+        </div>
+  
+    </div>
+</div>
+

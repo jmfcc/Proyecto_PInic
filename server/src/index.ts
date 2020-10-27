@@ -1,5 +1,6 @@
 import express, {Application} from 'express';
 import indexroutes from './routes/indexroutes';
+import alexroutes from './routes/alexroutes';
 
 import morgan from 'morgan';
 import cors from 'cors';
@@ -22,7 +23,7 @@ class server{
     }
     routes():void{
         this.app.use('/sys', indexroutes)
-        
+        this.app.use('/alex',alexroutes)
     }
     start():void{
         this.app.listen(this.app.get('port'),()=>{
