@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import {AuthService} from '../../../services/auth.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class VerPublicacionComponent implements OnInit {
   cursos:boolean = true;
   catedraticos:boolean = true;
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService,private _router: Router) { }
 
   ngOnInit(): void {
     this.mostrarTodasPublicaciones();
@@ -37,5 +38,6 @@ export class VerPublicacionComponent implements OnInit {
   cambiarCursos(){
     this.cursos = !this.cursos;
   }
+
 
 }

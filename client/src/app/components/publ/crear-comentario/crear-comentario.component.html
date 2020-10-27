@@ -25,29 +25,20 @@
   </div>
 </div>
 
-
 <div class="col-lg-8 col-md-7 offset-md-2">
-  <h1>Comentarios</h1>
+    <h1>Dejar Comentario</h1>
 </div>
 
-<div class="row">
-    <div class="col-md-8 offset-md-2">
+<div class="col-lg-8 col-md-5 offset-md-2">
+    <div class="card border-secondary mb-3">
 
-        <div *ngFor="let com of comentarios"> 
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">{{com.carne}} dice:</h5>
-            </div>
-            <div class="modal-body">
-              <p>{{com.msj}}</p>
-            </div>
-          </div>
-              <br>
+        <div class="col-lg-10 col-md-5">
+            <h3>Mensaje</h3>
+            <textarea class="form-control" id="mensaje" rows="4" [(ngModel)]="mensaje"></textarea>
+            <br>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="crearComentario()">Enviar Comentario</button>
+            <br>
         </div>
 
     </div>
 </div>
-<div class="col-lg-8 col-md-7 offset-md-2">
-  <p class="text-primary">Los Comentarios Finalizan aquí</p>
-</div>
-

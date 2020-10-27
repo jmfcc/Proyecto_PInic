@@ -11,6 +11,8 @@ import {NuevaPublicacionComponent} from './publ/nueva-publicacion/nueva-publicac
 
 
 import { AuthGuard } from './auth.guard'
+import { VerComentariosComponent } from './publ/ver-comentarios/ver-comentarios.component';
+import { CrearComentarioComponent } from './publ/crear-comentario/crear-comentario.component';
 
 const routes: Routes = [
   {
@@ -38,6 +40,14 @@ const routes: Routes = [
   {
     path: 'nueva-publicacion',
     component: NuevaPublicacionComponent
+  },
+  {
+    path: 'ver-comentarios/:idpub',
+    component:VerComentariosComponent
+  },
+  {
+    path: 'crear-comentario/:idpub',
+    component:CrearComentarioComponent
   }
 ];
 

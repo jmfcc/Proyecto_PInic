@@ -83,11 +83,7 @@ export class NuevaPublicacionComponent implements OnInit {
 
   publicar(){
     this.token = this.authService.getToken();
-    console.log(this.tipo);
-    console.log(this.selectedOption);
-    console.log(this.mensaje);
     console.log(this.token);
-
     this.publicacion.mensaje=this.mensaje;
     this.publicacion.tipo=this.tipo;
     this.publicacion.codigo = this.selectedOption;

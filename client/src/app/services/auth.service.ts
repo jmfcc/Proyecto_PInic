@@ -5,6 +5,8 @@ import { JwtResponseI } from '../models/jwt-response';
 import { tap } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Publicacion } from '../models/publicacion';
+import { idPub } from '../models/idpub';
+import { comentario } from '../models/comentario';
 
 @Injectable()
 
@@ -74,13 +76,21 @@ export class AuthService {
     return this.httpClient.get('http://localhost:3000/alex/obtener-publicaciones');
   }
 
-  obtenerUsuario(){
-    return this.httpClient.post('http://localhost:3000/alex/get-usuario',{"token":this.getToken()});
-  }
-
   crearPublicacion(publicacion:Publicacion){
     return this.httpClient.post("http://localhost:3000/alex/crear-publicacion", publicacion);
   }
  
+/****************************** COMENTARIOS ***************************************************/
+  obtenerPublicacionId(idpub:idPub){
+    return this.httpClient.post("http://localhost:3000/alex/obtener-publicacion-id", idpub);
+  }
+
+  obtenerComentarios(idpub:idPub){
+    return this.httpClient.post("http://localhost:3000/alex/obtener-comentarios", idpub);
+  }
   
+  crearComentario(coment:comentario){
+    return this.httpClient.post("http://localhost:3000/alex/crear-comentario", coment);
+  }
+
 }

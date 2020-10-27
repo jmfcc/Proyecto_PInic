@@ -97,7 +97,7 @@ class alexRoutes{
 
         this.router.get('/obtener-publicaciones', async function(req,res){
             try{
-                var cadena="Select  pu.Mensaje as msj ,pu.CarneUsuario as usuario ,Format(pu.Fecha, 'dd-MM-yyyy') as fecha,cu.Codigo as codCurso, cu.Nombre as Curso, ca.Nombres as catNombre, ca.Apellidos as catApellid from Publicacion as pu Left Join CursoCatedratico cc on pu.CorrelCursoCated = cc.Correlativo Left Join Curso cu on cc.CodigoCurso = cu.Codigo or pu.CodigoCurso = cu.Codigo Left Join Catedratico ca on cc.idCatedratico = ca.id or pu.idCatedratico = ca.id order by pu.Correlativo desc";
+                var cadena="Select pu.Correlativo as id, pu.Mensaje as msj ,pu.CarneUsuario as usuario ,Format(pu.Fecha, 'dd-MM-yyyy') as fecha, cu.Codigo as codCurso, cu.Nombre as Curso, ca.Nombres as catNombre, ca.Apellidos as catApellid from Publicacion as pu Left Join CursoCatedratico cc on pu.CorrelCursoCated = cc.Correlativo  Left Join Curso cu on cc.CodigoCurso = cu.Codigo or pu.CodigoCurso = cu.Codigo Left Join Catedratico ca on cc.idCatedratico = ca.id or pu.idCatedratico = ca.id order by pu.Correlativo desc";
                 var con = new mssql.ConnectionPool(config);
         
                 con.connect(function(err:any){
@@ -122,7 +122,6 @@ class alexRoutes{
 
         /******************** POSTS ***************************/
         this.router.post('/crear-publicacion',(req,res)=>{
-            console.log(req.body);
 
             jwt.verify(req.body.token, 'secretkey', (error:any, authData:any)=>{
                 if(error){
@@ -169,7 +168,108 @@ class alexRoutes{
 
         })
 
+
+        this.router.post('/obtener-comentarios',async function(req,res){
+            try{
+                let resp={
+                    publicacion: req.body.publicacion
+                }
+                var cadena="select Mensaje as msj, CarneUsuario as carne from Comentario where CorrelPubli = "+resp.publicacion+" order by id desc";
+                var con = new mssql.ConnectionPool(config);
+        
+                con.connect(function(err:any){
+                var req= new mssql.Request(con);
+                    if(err){
+                        console.log(err);
+                        return;
+                    }
+                req.query(cadena,function(err:any,recordset:any){
+                        if(err){
+                            console.log(err);
+                        }else{
+                            res.send(JSON.stringify(recordset.recordsets[0]));
+                            console.log(JSON.stringify(recordset))
+                        }
+                        con.close();
+                    });
+                });
+            }catch(Exception){
+                console.log(Exception);
+            }
+        });
+
+
+        this.router.post('/obtener-publicacion-id', async function(req,res){
+            try{
+                let resp={
+                    publicacion: req.body.publicacion
+                }
+                var cadena="Select pu.Correlativo as id, pu.Mensaje as msj ,pu.CarneUsuario as usuario ,Format(pu.Fecha, 'dd-MM-yyyy') as fecha, cu.Codigo as codCurso, cu.Nombre as Curso, ca.Nombres as catNombre, ca.Apellidos as catApellid from Publicacion as pu Left Join CursoCatedratico cc on pu.CorrelCursoCated = cc.Correlativo  Left Join Curso cu on cc.CodigoCurso = cu.Codigo or pu.CodigoCurso = cu.Codigo Left Join Catedratico ca on cc.idCatedratico = ca.id or pu.idCatedratico = ca.id where pu.Correlativo =  "+resp.publicacion+"";
+                var con = new mssql.ConnectionPool(config);
+        
+                con.connect(function(err:any){
+                var req= new mssql.Request(con);
+                    if(err){
+                        console.log(err);
+                        return;
+                    }
+                req.query(cadena,function(err:any,recordset:any){
+                        if(err){
+                            console.log(err);
+                        }else{
+                            res.send(JSON.stringify(recordset.recordsets[0]));
+                            console.log(JSON.stringify(recordset))
+                        }
+                        con.close();
+                    });
+                });
+            }catch(Exception){
+                console.log(Exception);
+            }
+        });
+
+        this.router.post('/crear-comentario',async function(req,res){
+
+            jwt.verify(req.body.token, 'secretkey', (error:any, authData:any)=>{
+                if(error){
+                    res.sendStatus(403);
+                }else{
+                    let com ={
+                        publicacion: req.body.publicacion,
+                        mensaje: req.body.mensaje,
+                        usuario: authData.resp.usuario,
+                    };
+
+                    try{
+                        var cadena = "insert into Comentario(Mensaje, CarneUsuario, CorrelPubli) values ('"+com.mensaje+"',"+com.usuario+","+com.publicacion+")";
+                        var con = new mssql.ConnectionPool(config);
+                
+                        con.connect(function(err:any){
+                        var req= new mssql.Request(con);
+                            if(err){
+                                console.log(err);
+                                return;
+                            }
+                        req.query(cadena,function(err:any,recordset:any){
+                                if(err){
+                                    console.log(err);
+                                }else{
+                                    res.send(JSON.stringify(recordset));
+                                }
+                                con.close();
+                            });
+                        });
+                    }catch(Exception){
+                        console.log(Exception);
+                    }
+
+                }
+            })
+
+        });
+
     }
+
 
 }
 

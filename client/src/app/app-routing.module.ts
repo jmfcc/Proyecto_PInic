@@ -5,14 +5,13 @@ import { AuthRoutingModule } from './components/auth-routing.module';
 const routes: Routes = [
   {
     path: '',
-    redirectTo:'/components',
+    redirectTo:'/components/login',
     pathMatch: 'full'
   },
   {
     path: 'components',
     loadChildren: () => import('./components/auth.module').then(m => m.AuthModule),
-  },
-  
+  }
 ];
 
 @NgModule({

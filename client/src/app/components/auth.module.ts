@@ -15,6 +15,7 @@ import { HomeNavbarComponent } from './navbar/home-navbar/home-navbar.component'
 import { NuevaPublicacionComponent } from './publ/nueva-publicacion/nueva-publicacion.component';
 import { VerPublicacionComponent } from './publ/ver-publicacion/ver-publicacion.component';
 import { VerComentariosComponent } from './publ/ver-comentarios/ver-comentarios.component';
+import { CrearComentarioComponent } from './publ/crear-comentario/crear-comentario.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { VerComentariosComponent } from './publ/ver-comentarios/ver-comentarios.
     NuevaPublicacionComponent,
     VerPublicacionComponent,
     VerComentariosComponent,
+    CrearComentarioComponent,
   ],
   imports: [
     CommonModule,
