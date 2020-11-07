@@ -35,19 +35,23 @@ const routes: Routes = [
   },
   {
     path: 'ver-publicacion',
-    component: VerPublicacionComponent
+    component: VerPublicacionComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'nueva-publicacion',
-    component: NuevaPublicacionComponent
+    component: NuevaPublicacionComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'ver-comentarios/:idpub',
-    component:VerComentariosComponent
+    component:VerComentariosComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'crear-comentario/:idpub',
-    component:CrearComentarioComponent
+    component:CrearComentarioComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
