@@ -15,8 +15,8 @@ var jwt = require('jsonwebtoken');
 var config = {
     server: 'localhost',
     host: 'localhost',
-    user: 'alexwgd',
-    password: '1234',
+    user: 'PauYMo',
+    password: '12345',
     port: 1433
 };
 class alexRoutes {
@@ -281,6 +281,38 @@ class alexRoutes {
                         }
                     }
                 });
+            });
+        });
+        /***************Rutas de Pau y moi XD****************/
+        this.router.post('/obtener-perfil', function (req, res) {
+            return __awaiter(this, void 0, void 0, function* () {
+                try {
+                    let resp = {
+                        carnet: req.body.Carnet
+                    };
+                    var cadena = "SELECT Carne, Nombres, Apellidos, Correo FROM Usuario WHERE Carne=" + resp.carnet;
+                    var con = new mssql.ConnectionPool(config);
+                    con.connect(function (err) {
+                        var req = new mssql.Request(con);
+                        if (err) {
+                            console.log(err);
+                            return;
+                        }
+                        req.query(cadena, function (err, recordset) {
+                            if (err) {
+                                console.log(err);
+                            }
+                            else {
+                                res.send(JSON.stringify(recordset.recordsets[0]));
+                                console.log(JSON.stringify(recordset));
+                            }
+                            con.close();
+                        });
+                    });
+                }
+                catch (Exception) {
+                    console.log(Exception);
+                }
             });
         });
     }

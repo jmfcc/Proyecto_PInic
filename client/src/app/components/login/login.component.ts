@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
     //console.log('Login', form.value);
     this.authService.login(form.value).subscribe(res =>{
       console.log('deberia redireccionar');
+      //localStorage.setItem('usuario',)
       this.router.navigate(['/components/home']);
     });
    }

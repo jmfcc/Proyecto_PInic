@@ -5,8 +5,8 @@ var jwt = require ('jsonwebtoken');
 var config = {
     server: 'localhost',
     host: 'localhost',
-    user: 'alexwgd', //Este debe ser su usuario
-    password: '1234', // Esta debe ser su contraseña
+    user: 'PauYMo', //Este debe ser su usuario
+    password: '12345', // Esta debe ser su contraseña
     port: 1433
 };
 
@@ -267,7 +267,35 @@ class alexRoutes{
             })
 
         });
-
+        /***************Rutas de Pau y moi XD****************/
+        this.router.post('/obtener-perfil', async function(req,res){
+            try{
+                let resp={
+                    carnet: req.body.Carnet
+                }
+                var cadena="SELECT Carne, Nombres, Apellidos, Correo FROM Usuario WHERE Carne="+resp.carnet;
+                var con = new mssql.ConnectionPool(config);
+        
+                con.connect(function(err:any){
+                var req= new mssql.Request(con);
+                    if(err){
+                        console.log(err);
+                        return;
+                    }
+                req.query(cadena,function(err:any,recordset:any){
+                        if(err){
+                            console.log(err);
+                        }else{
+                            res.send(JSON.stringify(recordset.recordsets[0]));
+                            console.log(JSON.stringify(recordset))
+                        }
+                        con.close();
+                    });
+                });
+            }catch(Exception){
+                console.log(Exception);
+            }
+        });
     }
 
 

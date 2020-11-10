@@ -5,8 +5,8 @@ var mssql = require('mssql');
 var config = {
     server: 'localhost',
     host: 'localhost',
-    user: 'alexwgd', //Este debe ser su usuario
-    password: '1234', // Esta debe ser su contraseña
+    user: 'PauYMo', //Este debe ser su usuario
+    password: '12345', // Esta debe ser su contraseña
     port: 1433 
 };
 

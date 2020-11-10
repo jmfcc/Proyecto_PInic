@@ -13,6 +13,7 @@ import {NuevaPublicacionComponent} from './publ/nueva-publicacion/nueva-publicac
 import { AuthGuard } from './auth.guard'
 import { VerComentariosComponent } from './publ/ver-comentarios/ver-comentarios.component';
 import { CrearComentarioComponent } from './publ/crear-comentario/crear-comentario.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 const routes: Routes = [
   {
@@ -48,6 +49,10 @@ const routes: Routes = [
   {
     path: 'crear-comentario/:idpub',
     component:CrearComentarioComponent
+  },
+  {
+    path: 'mi-perfil',
+    component: PerfilComponent
   }
 ];
 

@@ -15,8 +15,8 @@ var mssql = require('mssql');
 var config = {
     server: 'localhost',
     host: 'localhost',
-    user: 'alexwgd',
-    password: '1234',
+    user: 'PauYMo',
+    password: '12345',
     port: 1433
 };
 class indexRoutes {

@@ -7,6 +7,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { Publicacion } from '../models/publicacion';
 import { idPub } from '../models/idpub';
 import { comentario } from '../models/comentario';
+import { Usuario } from '../models/usuario-modelo';
 
 @Injectable()
 
@@ -24,6 +25,7 @@ export class AuthService {
 
 
   login(user: UserI): Observable<JwtResponseI> {
+    localStorage.setItem('Usuario',user.usuario.toString());
     return this.httpClient.post<JwtResponseI>("http://localhost:3000/sys/login",
       user).pipe(tap(
         (res: JwtResponseI) => {
@@ -91,6 +93,12 @@ export class AuthService {
   
   crearComentario(coment:comentario){
     return this.httpClient.post("http://localhost:3000/alex/crear-comentario", coment);
+  }
+/***************************************MI PERFIL**********************************************/
+  obtenerPerfil(carnet:number):Observable<Usuario[]>{
+    return this.httpClient.post<Usuario[]>("http://localhost:3000/alex/obtener-perfil",{
+      Carnet:carnet
+    });
   }
 
 }
