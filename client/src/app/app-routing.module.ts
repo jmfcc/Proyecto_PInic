@@ -5,7 +5,7 @@ import { AuthRoutingModule } from './components/auth-routing.module';
 const routes: Routes = [
   {
     path: '',
-    redirectTo:'/components',
+    redirectTo:'/components/login',
     pathMatch: 'full'
   },
   {
