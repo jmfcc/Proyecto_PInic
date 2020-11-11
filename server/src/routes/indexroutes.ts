@@ -8,11 +8,8 @@ var config = {
     user: 'admsc', //'alexwgd', //Este debe ser su usuario
     password: 'Bu7n03Cc', //'1234', // Esta debe ser su contraseña
    
-    port: 1433 
-    "options": {
-"encrypt": true,
-"enableArithAbort": true
-}
+    port: 1433 ,
+    
 };
 
 class indexRoutes{

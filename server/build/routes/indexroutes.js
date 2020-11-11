@@ -18,10 +18,6 @@ var config = {
     user: 'admsc',
     password: 'Bu7n03Cc',
     port: 1433,
-    "options": {
-        "encrypt": true,
-        "enableArithAbort": true
-    }
 };
 class indexRoutes {
     constructor() {
