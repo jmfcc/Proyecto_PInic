@@ -1,0 +1,38 @@
+<app-home-navbar></app-home-navbar>
+
+<h1>Perfil </h1>
+<table *ngFor="let us of MiUsuario" style="width: 100%;">
+    <tr>
+        <td><h3>Carnet: </h3></td>
+        <td><h4>{{us.Carne}}</h4></td>
+    </tr>
+    <tr>
+        <td><h3>Correo: </h3></td>
+        <td><h4>{{us.Correo}}</h4></td>
+        <td style="width: 50%;"></td>
+        <td></td>
+          <td style="width: 2%;"></td>
+    </tr>
+    <tr>
+        <td><h3>Nombre:   </h3></td>
+        <td><h4>{{us.Nombres}}</h4></td>
+        <td style="width: 50%;"></td>
+        <td></td>
+          <td style="width: 2%;"></td>
+    </tr>
+    <tr>
+        <td><h3>Apellido:   </h3></td>
+        <td><h4>{{us.Apellidos}}</h4></td>
+        <td style="width: 50%;"></td>
+        <td></td>
+          <td style="width: 2%;"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td style="width: 50%;"></td>
+          <td></td>
+    </tr>
+</table>
+
+<a href="/components/ver-publicacion" class="card-link btn btn-primary btn-sm">Volver</a>
