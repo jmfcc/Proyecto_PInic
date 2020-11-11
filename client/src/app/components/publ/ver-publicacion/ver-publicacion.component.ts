@@ -17,6 +17,8 @@ export class VerPublicacionComponent implements OnInit {
   selectedOption: string = "todos";
   entro_cursos = false;
   entro_catedraticos = false;
+  entro_curso_catedraticos = false;
+  cursoCatedratico:any = [];
 
   constructor(private authService:AuthService,private _router: Router) { }
 
@@ -43,6 +45,7 @@ export class VerPublicacionComponent implements OnInit {
   mostrarCursos(){
     this.entro_cursos = true;
     this.entro_catedraticos = false;
+    this.entro_curso_catedraticos = false;
     this.cursos = [];
     this.catedraticos=[];
     this.authService.obtenerCursos().subscribe(
@@ -58,6 +61,7 @@ export class VerPublicacionComponent implements OnInit {
 
   mostrarCatedraticos(){
     this.entro_cursos = false;
+    this.entro_curso_catedraticos = false;
     this.entro_catedraticos = true;
     this.cursos = [];
     this.catedraticos=[];
@@ -65,6 +69,24 @@ export class VerPublicacionComponent implements OnInit {
       res=>{
         console.log(res);
         this.catedraticos=res;
+      },
+      err=>{
+        console.log(err);
+      }
+    );
+  }
+
+  mostrarCursoCatedraticos(){
+    this.entro_cursos = false;
+    this.entro_curso_catedraticos = true;
+    this.entro_catedraticos = false;
+    this.cursos = [];
+    this.catedraticos=[];
+    this.cursoCatedratico=[];
+    this.authService.obtenerCursoCatedratico().subscribe(
+      res=>{
+        console.log(res);
+        this.cursoCatedratico=res;
       },
       err=>{
         console.log(err);
@@ -114,6 +136,31 @@ export class VerPublicacionComponent implements OnInit {
       }
       else{
         this.authService.obtenerPublicacionesPorCatedratico(id).subscribe(
+          res=>{
+            console.log(res);
+            this.publicaciones=res;
+          },
+          err=>{
+            console.log(err);
+          }
+        );
+      }
+
+    }
+    else if(this.entro_curso_catedraticos){
+      if(id==-1){
+        this.authService.obtenerPublicacionesTodosCursoCatedratico().subscribe(
+          res=>{
+            console.log(res);
+            this.publicaciones=res;
+          },
+          err=>{
+            console.log(err);
+          }
+        );
+      }
+      else{
+        this.authService.obtenerPublicacionesPorCursoCatedratico(id).subscribe(
           res=>{
             console.log(res);
             this.publicaciones=res;

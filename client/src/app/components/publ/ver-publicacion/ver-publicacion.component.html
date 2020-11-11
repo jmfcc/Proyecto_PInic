@@ -14,13 +14,19 @@
         <h4>Filtrar</h4>
         <div class="custom-control custom-radio">
             <input type="radio" id="tipoCurso" name="customRadio" class="custom-control-input" (click)="mostrarCursos()">
-            <label class="custom-control-label" for="tipoCurso">Curso</label>
+            <label class="custom-control-label" for="tipoCurso">Por curso</label>
         </div>
 
         <div class="custom-control custom-radio">
             <input type="radio" id="tipoCatedratico" name="customRadio" class="custom-control-input" (click)="mostrarCatedraticos()">
-            <label class="custom-control-label" for="tipoCatedratico">Catedratico</label>
+            <label class="custom-control-label" for="tipoCatedratico">Por catedratico</label>
         </div>
+
+        <div class="custom-control custom-radio">
+          <input type="radio" id="tipoCatedraticoCurso" name="customRadio" class="custom-control-input" (click)="mostrarCursoCatedraticos()">
+          <label class="custom-control-label" for="tipoCatedraticoCurso">Por catedratico de un Curso</label>
+      </div>
+
     </div>
 
     <div class="col-lg-9 col-md-3">
@@ -34,8 +40,11 @@
               <option *ngFor="let cat of catedraticos" 
                   [value]="cat.id">
                 {{cat.Nombres}} {{cat.Apellidos}}
-
               </option>
+              <option *ngFor="let fuc of cursoCatedratico" 
+              [value]="fuc.Correlativo">
+              {{fuc.Codigo}} {{fuc.Nombre}}  —— {{fuc.Nombres}} {{fuc.Apellidos}}
+          </option>
           </select>
       </div>
   </div>

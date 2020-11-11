@@ -95,6 +95,9 @@ export class AuthService {
   obtenerPublicacionesPorCatedratico(id){
     return this.httpClient.get('http://localhost:3000/filtro/por-catedratico/'+id);
   }
+  obtenerPublicacionesPorCursoCatedratico(id){
+    return this.httpClient.get('http://localhost:3000/filtro/por-CursoCatedratico/'+id);
+  }
   obtenerPublicacionesPorFecha(){
     return this.httpClient.get('http://localhost:3000/filtro/por-fecha');
   }
@@ -103,6 +106,9 @@ export class AuthService {
   }
   obtenerPublicacionesTodosCursos(){
     return this.httpClient.get('http://localhost:3000/filtro/por-curso');
+  }
+  obtenerPublicacionesTodosCursoCatedratico(){
+    return this.httpClient.get('http://localhost:3000/filtro/por-CursoCatedratico');
   }
   
 
