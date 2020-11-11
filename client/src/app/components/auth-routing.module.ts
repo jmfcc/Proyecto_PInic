@@ -59,16 +59,17 @@ const routes: Routes = [
   {
     path: 'crear-comentario/:idpub',
     component:CrearComentarioComponent,
-    component:CrearComentarioComponent,
     canActivate: [AuthGuard]
   },
   {
     path: 'mi-perfil',
-    component: PerfilComponent
+    component: PerfilComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'Ver-Perfil/:VarC',
-    component:VerperfilComponent
+    component:VerperfilComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
