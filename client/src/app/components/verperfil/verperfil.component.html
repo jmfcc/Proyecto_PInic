@@ -1,6 +1,6 @@
 <app-home-navbar></app-home-navbar>
 
-<h1>Mi perfil </h1>
+<h1>Perfil </h1>
 <table *ngFor="let us of MiUsuario" style="width: 100%;">
     <tr>
         <td><h3>Carnet: </h3></td>
@@ -10,36 +10,29 @@
         <td><h3>Correo: </h3></td>
         <td><h4>{{us.Correo}}</h4></td>
         <td style="width: 50%;"></td>
-        <td><fieldset>
-            <input class="form-control" id="correo" type="text" placeholder="Correo" value="{{us.Correo}}" >
-          </fieldset></td>
+        <td></td>
           <td style="width: 2%;"></td>
     </tr>
     <tr>
         <td><h3>Nombre:   </h3></td>
         <td><h4>{{us.Nombres}}</h4></td>
         <td style="width: 50%;"></td>
-        <td><fieldset>
-            <input class="form-control" id="nombre" type="text" placeholder="Nombre" value="{{us.Nombres}}">
-          </fieldset></td>
+        <td></td>
           <td style="width: 2%;"></td>
     </tr>
     <tr>
         <td><h3>Apellido:   </h3></td>
         <td><h4>{{us.Apellidos}}</h4></td>
         <td style="width: 50%;"></td>
-        <td><fieldset >
-            <input class="form-control" id="apellido" type="text" placeholder="Apellido"  value="{{us.Apellidos}}">
-          </fieldset></td>
+        <td></td>
           <td style="width: 2%;"></td>
     </tr>
     <tr>
         <td></td>
         <td></td>
         <td style="width: 50%;"></td>
-          <td><button type="button" class="btn btn-outline-primary"(click)='Modificar()'>Modificar Usuario</button></td>
+          <td></td>
     </tr>
 </table>
 
-<button type="button" class="btn btn-outline-primary">Pensum</button>
-
+<a href="/components/ver-publicacion" class="card-link btn btn-primary btn-sm">Volver</a>

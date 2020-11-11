@@ -14,6 +14,8 @@ import { AuthGuard } from './auth.guard'
 import { VerComentariosComponent } from './publ/ver-comentarios/ver-comentarios.component';
 import { CrearComentarioComponent } from './publ/crear-comentario/crear-comentario.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { VerperfilComponent } from './verperfil/verperfil.component';
+
 
 const routes: Routes = [
   {
@@ -53,6 +55,10 @@ const routes: Routes = [
   {
     path: 'mi-perfil',
     component: PerfilComponent
+  },
+  {
+    path: 'Ver-Perfil/:VarC',
+    component:VerperfilComponent
   }
 ];
 

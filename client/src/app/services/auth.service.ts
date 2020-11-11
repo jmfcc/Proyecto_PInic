@@ -101,4 +101,13 @@ export class AuthService {
     });
   }
 
+  modificarPerfil(carnet:number,nombre:string, apellido:string,correo:string){
+    return this.httpClient.post("http://localhost:3000/alex/modificar-perfil",{
+      Carnet:carnet,
+      Nombre:nombre,
+      Apellido:apellido,
+      Correo:correo
+    });
+  }
+
 }

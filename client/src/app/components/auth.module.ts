@@ -17,6 +17,7 @@ import { VerPublicacionComponent } from './publ/ver-publicacion/ver-publicacion.
 import { VerComentariosComponent } from './publ/ver-comentarios/ver-comentarios.component';
 import { CrearComentarioComponent } from './publ/crear-comentario/crear-comentario.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { VerperfilComponent } from './verperfil/verperfil.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { PerfilComponent } from './perfil/perfil.component';
     VerComentariosComponent,
     CrearComentarioComponent,
     PerfilComponent,
+    VerperfilComponent,
   ],
   imports: [
     CommonModule,
