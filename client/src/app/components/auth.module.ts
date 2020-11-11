@@ -16,6 +16,9 @@ import { NuevaPublicacionComponent } from './publ/nueva-publicacion/nueva-public
 import { VerPublicacionComponent } from './publ/ver-publicacion/ver-publicacion.component';
 import { VerComentariosComponent } from './publ/ver-comentarios/ver-comentarios.component';
 import { CrearComentarioComponent } from './publ/crear-comentario/crear-comentario.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { VerperfilComponent } from './verperfil/verperfil.component';
+import { VerificarCorreoComponent } from './verificar-correo/verificar-correo.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { CrearComentarioComponent } from './publ/crear-comentario/crear-comentar
     VerPublicacionComponent,
     VerComentariosComponent,
     CrearComentarioComponent,
+    PerfilComponent,
+    VerperfilComponent,
+    VerificarCorreoComponent,
   ],
   imports: [
     CommonModule,

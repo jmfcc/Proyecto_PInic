@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { HomeComponent } from './home/home.component';
+import { VerificarCorreoComponent } from './verificar-correo/verificar-correo.component';
 
 /************** Componente de publicaciones  ****************/
 import {VerPublicacionComponent} from './publ/ver-publicacion/ver-publicacion.component';
@@ -13,6 +14,9 @@ import {NuevaPublicacionComponent} from './publ/nueva-publicacion/nueva-publicac
 import { AuthGuard } from './auth.guard'
 import { VerComentariosComponent } from './publ/ver-comentarios/ver-comentarios.component';
 import { CrearComentarioComponent } from './publ/crear-comentario/crear-comentario.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { VerperfilComponent } from './verperfil/verperfil.component';
+
 
 const routes: Routes = [
   {
@@ -34,6 +38,10 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'verificar-email',
+    component: VerificarCorreoComponent
+  },
+  {
     path: 'ver-publicacion',
     component: VerPublicacionComponent,
     canActivate: [AuthGuard]
@@ -51,7 +59,16 @@ const routes: Routes = [
   {
     path: 'crear-comentario/:idpub',
     component:CrearComentarioComponent,
+    component:CrearComentarioComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'mi-perfil',
+    component: PerfilComponent
+  },
+  {
+    path: 'Ver-Perfil/:VarC',
+    component:VerperfilComponent
   }
 ];
 

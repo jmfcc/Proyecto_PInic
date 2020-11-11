@@ -7,6 +7,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { Publicacion } from '../models/publicacion';
 import { idPub } from '../models/idpub';
 import { comentario } from '../models/comentario';
+import { Usuario } from '../models/usuario-modelo';
 
 @Injectable()
 
@@ -24,6 +25,7 @@ export class AuthService {
 
 
   login(user: UserI): Observable<JwtResponseI> {
+    localStorage.setItem('Usuario',user.usuario.toString());
     return this.httpClient.post<JwtResponseI>("http://localhost:3000/sys/login",
       user).pipe(tap(
         (res: JwtResponseI) => {
@@ -58,6 +60,13 @@ export class AuthService {
     return !!localStorage.getItem('ACCESS_TOKEN')
   }
 
+  verificarCorreo(user: UserI){
+    return this.httpClient.post("http://localhost:3000/sys/user/verificar", user);
+  }
+
+  actualizarContrasenia(user:UserI){
+    return this.httpClient.post("http://localhost:3000/sys/user/actualizarContrasenia", user);
+  }
  /****************** PUBLICACIONES ***********************/
 
   obtenerCursos(){
@@ -79,7 +88,32 @@ export class AuthService {
   crearPublicacion(publicacion:Publicacion){
     return this.httpClient.post("http://localhost:3000/alex/crear-publicacion", publicacion);
   }
- 
+
+  //**********************Filtro de publicaciones******************/
+
+  obtenerPublicacionesPorCurso(id){
+    return this.httpClient.get('http://localhost:3000/filtro/por-curso/'+id);
+  }
+  obtenerPublicacionesPorCatedratico(id){
+    return this.httpClient.get('http://localhost:3000/filtro/por-catedratico/'+id);
+  }
+  obtenerPublicacionesPorCursoCatedratico(id){
+    return this.httpClient.get('http://localhost:3000/filtro/por-CursoCatedratico/'+id);
+  }
+  obtenerPublicacionesPorFecha(){
+    return this.httpClient.get('http://localhost:3000/filtro/por-fecha');
+  }
+  obtenerPublicacionesTodosCatedraticos(){
+    return this.httpClient.get('http://localhost:3000/filtro/por-catedratico');
+  }
+  obtenerPublicacionesTodosCursos(){
+    return this.httpClient.get('http://localhost:3000/filtro/por-curso');
+  }
+  obtenerPublicacionesTodosCursoCatedratico(){
+    return this.httpClient.get('http://localhost:3000/filtro/por-CursoCatedratico');
+  }
+  
+
 /****************************** COMENTARIOS ***************************************************/
   obtenerPublicacionId(idpub:idPub){
     return this.httpClient.post("http://localhost:3000/alex/obtener-publicacion-id", idpub);
@@ -91,6 +125,21 @@ export class AuthService {
   
   crearComentario(coment:comentario){
     return this.httpClient.post("http://localhost:3000/alex/crear-comentario", coment);
+  }
+/***************************************MI PERFIL**********************************************/
+  obtenerPerfil(carnet:number):Observable<Usuario[]>{
+    return this.httpClient.post<Usuario[]>("http://localhost:3000/alex/obtener-perfil",{
+      Carnet:carnet
+    });
+  }
+
+  modificarPerfil(carnet:number,nombre:string, apellido:string,correo:string){
+    return this.httpClient.post("http://localhost:3000/alex/modificar-perfil",{
+      Carnet:carnet,
+      Nombre:nombre,
+      Apellido:apellido,
+      Correo:correo
+    });
   }
 
 }

@@ -41,7 +41,7 @@ class indexRoutes {
                             var req = new mssql.Request(con);
                             if (err) {
                                 res.send({ "mensaje": "Algo no salio bien" });
-                                //console.log(err);
+                                console.log(err);
                                 //return;
                             }
                             req.query(cadena, function (err, recordset) {

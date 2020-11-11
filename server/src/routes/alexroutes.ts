@@ -267,7 +267,68 @@ class alexRoutes{
             })
 
         });
-
+        /***************Rutas de Pau y moi XD****************/
+        this.router.post('/obtener-perfil', async function(req,res){
+            try{
+                let resp={
+                    carnet: req.body.Carnet
+                }
+                var cadena="SELECT Carne, Nombres, Apellidos, Correo FROM Usuario WHERE Carne="+resp.carnet;
+                var con = new mssql.ConnectionPool(config);
+        
+                con.connect(function(err:any){
+                var req= new mssql.Request(con);
+                    if(err){
+                        console.log(err);
+                        return;
+                    }
+                req.query(cadena,function(err:any,recordset:any){
+                        if(err){
+                            console.log(err);
+                        }else{
+                            res.send(JSON.stringify(recordset.recordsets[0]));
+                            console.log(JSON.stringify(recordset))
+                        }
+                        con.close();
+                    });
+                });
+            }catch(Exception){
+                console.log(Exception);
+            }
+        });
+    
+        this.router.post('/modificar-perfil', async function(req,res){
+            try{
+                let resp={
+                    carnet: req.body.Carnet,
+                    nombre: req.body.Nombre,
+                    apellido: req.body.Apellido,
+                    correo: req.body.Correo
+                }
+                var cadena="UPDATE Usuario SET Correo='"+resp.correo+"', Nombres='"+resp.nombre+"',Apellidos='"+resp.apellido+"' WHERE Carne="+resp.carnet;
+                var con = new mssql.ConnectionPool(config);
+        
+                con.connect(function(err:any){
+                var req= new mssql.Request(con);
+                    if(err){
+                        console.log(err);
+                        return;
+                    }
+                req.query(cadena,function(err:any,recordset:any){
+                        if(err){
+                            console.log(err);
+                        }else{
+                            res.send(JSON.stringify('LISTO!'));
+                            console.log(JSON.stringify(recordset))
+                        }
+                        con.close();
+                    });
+                });
+            }catch(Exception){
+                console.log(Exception);
+            }
+        });
+    
     }
 
 
