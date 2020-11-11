@@ -60,6 +60,13 @@ export class AuthService {
     return !!localStorage.getItem('ACCESS_TOKEN')
   }
 
+  verificarCorreo(user: UserI){
+    return this.httpClient.post("http://localhost:3000/sys/user/verificar", user);
+  }
+
+  actualizarContrasenia(user:UserI){
+    return this.httpClient.post("http://localhost:3000/sys/user/actualizarContrasenia", user);
+  }
  /****************** PUBLICACIONES ***********************/
 
   obtenerCursos(){
@@ -81,7 +88,32 @@ export class AuthService {
   crearPublicacion(publicacion:Publicacion){
     return this.httpClient.post("http://localhost:3000/alex/crear-publicacion", publicacion);
   }
- 
+
+  //**********************Filtro de publicaciones******************/
+
+  obtenerPublicacionesPorCurso(id){
+    return this.httpClient.get('http://localhost:3000/filtro/por-curso/'+id);
+  }
+  obtenerPublicacionesPorCatedratico(id){
+    return this.httpClient.get('http://localhost:3000/filtro/por-catedratico/'+id);
+  }
+  obtenerPublicacionesPorCursoCatedratico(id){
+    return this.httpClient.get('http://localhost:3000/filtro/por-CursoCatedratico/'+id);
+  }
+  obtenerPublicacionesPorFecha(){
+    return this.httpClient.get('http://localhost:3000/filtro/por-fecha');
+  }
+  obtenerPublicacionesTodosCatedraticos(){
+    return this.httpClient.get('http://localhost:3000/filtro/por-catedratico');
+  }
+  obtenerPublicacionesTodosCursos(){
+    return this.httpClient.get('http://localhost:3000/filtro/por-curso');
+  }
+  obtenerPublicacionesTodosCursoCatedratico(){
+    return this.httpClient.get('http://localhost:3000/filtro/por-CursoCatedratico');
+  }
+  
+
 /****************************** COMENTARIOS ***************************************************/
   obtenerPublicacionId(idpub:idPub){
     return this.httpClient.post("http://localhost:3000/alex/obtener-publicacion-id", idpub);

@@ -5,8 +5,8 @@ var jwt = require ('jsonwebtoken');
 var config = {
     server: 'localhost',
     host: 'localhost',
-    user: 'PauYMo', //Este debe ser su usuario
-    password: '12345', // Esta debe ser su contraseña
+    user: 'admsc', //'alexwgd', //Este debe ser su usuario
+    password: 'Bu7n03Cc', //'1234', // Esta debe ser su contraseña
     port: 1433
 };
 

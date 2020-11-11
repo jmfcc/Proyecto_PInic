@@ -15,8 +15,8 @@ var jwt = require('jsonwebtoken');
 var config = {
     server: 'localhost',
     host: 'localhost',
-    user: 'PauYMo',
-    password: '12345',
+    user: 'admsc',
+    password: 'Bu7n03Cc',
     port: 1433
 };
 class alexRoutes {

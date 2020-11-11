@@ -15,8 +15,8 @@ var mssql = require('mssql');
 var config = {
     server: 'localhost',
     host: 'localhost',
-    user: 'PauYMo',
-    password: '12345',
+    user: 'admsc',
+    password: 'Bu7n03Cc',
     port: 1433
 };
 class indexRoutes {
@@ -41,7 +41,7 @@ class indexRoutes {
                             var req = new mssql.Request(con);
                             if (err) {
                                 res.send({ "mensaje": "Algo no salio bien" });
-                                //console.log(err);
+                                console.log(err);
                                 //return;
                             }
                             req.query(cadena, function (err, recordset) {
