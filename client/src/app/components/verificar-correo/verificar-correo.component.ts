@@ -42,6 +42,7 @@ export class VerificarCorreoComponent implements OnInit {
     form1.value.usuario = this.usuario
     console.log(form1.value)
     this.authService.actualizarContrasenia(form1.value).subscribe(res =>{
+      this.router.navigateByUrl("/components/login");
       console.log(res)
     }, err =>{
       console.log(err)

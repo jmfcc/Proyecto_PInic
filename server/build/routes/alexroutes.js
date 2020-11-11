@@ -14,10 +14,9 @@ var mssql = require('mssql');
 var jwt = require('jsonwebtoken');
 var config = {
     server: 'localhost',
-    database: 'SCUSAC',
     host: 'localhost',
-    user: 'sa',
-    password: 'base789',
+    user: 'admsc',
+    password: 'Bu7n03Cc',
     port: 1433
 };
 class alexRoutes {

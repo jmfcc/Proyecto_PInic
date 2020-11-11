@@ -6,12 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './components/auth.guard';
-import { VerificarCorreoComponent } from './components/verificar-correo/verificar-correo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VerificarCorreoComponent
   ],
   imports: [
     BrowserModule,

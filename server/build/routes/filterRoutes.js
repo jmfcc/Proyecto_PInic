@@ -13,10 +13,9 @@ const express_1 = require("express");
 var mssql = require('mssql');
 var config = {
     server: 'localhost',
-    database: 'SCUSAC',
     host: 'localhost',
-    user: 'sa',
-    password: 'base789',
+    user: 'admsc',
+    password: 'Bu7n03Cc',
     port: 1433
 };
 class filterRoutes {
