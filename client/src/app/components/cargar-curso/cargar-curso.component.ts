@@ -47,7 +47,7 @@ export class CargarCursoComponent implements OnInit {
     );
   }
   agregarCurso(form) :void{
-    var d = document.getElementById("nota").value;
+    var d = (<HTMLInputElement>document.getElementById("nota")).value;
     console.log(d+"ddd")
     var parseada= parseInt(d);
     console.log(parseada)
