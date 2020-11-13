@@ -13,7 +13,7 @@ const express_1 = require("express");
 var jwt = require('jsonwebtoken');
 var mssql = require('mssql');
 var config = {
-    server: 'KEVIN',
+    server: 'localhost',
     host: 'localhost',
     user: 'admsc',
     password: 'Bu7n03Cc',

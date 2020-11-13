@@ -3,7 +3,7 @@ var mssql = require('mssql');
 var jwt = require ('jsonwebtoken');
 
 var config = {
-    server: 'KEVIN',
+    server: 'localhost', //server: 'KEVIN',
     host: 'localhost',
     user: 'admsc', //'alexwgd', //Este debe ser su usuario
     password: 'Bu7n03Cc', //'1234', // Esta debe ser su contraseña
