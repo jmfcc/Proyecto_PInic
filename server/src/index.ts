@@ -3,6 +3,7 @@ import indexroutes from './routes/indexroutes';
 import userRoutes from './routes/userRoutes';
 import alexroutes from './routes/alexroutes';
 import filtterRoutes from './routes/filterRoutes';
+import cargar from './routes/cargarCursoRouter'
 
 import morgan from 'morgan';
 import cors from 'cors';
@@ -29,6 +30,7 @@ class server{
         
         this.app.use('/alex',alexroutes)
         this.app.use('/filtro',filtterRoutes)
+        this.app.use('/kevin',cargar)
     }
     start():void{
         this.app.listen(this.app.get('port'),()=>{

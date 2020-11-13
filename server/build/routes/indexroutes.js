@@ -17,7 +17,7 @@ var config = {
     host: 'localhost',
     user: 'admsc',
     password: 'Bu7n03Cc',
-    port: 1433,
+    port: 1433
 };
 class indexRoutes {
     constructor() {

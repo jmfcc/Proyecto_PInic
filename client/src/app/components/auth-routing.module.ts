@@ -16,6 +16,7 @@ import { VerComentariosComponent } from './publ/ver-comentarios/ver-comentarios.
 import { CrearComentarioComponent } from './publ/crear-comentario/crear-comentario.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { VerperfilComponent } from './verperfil/verperfil.component';
+import { CargarCursoComponent } from './cargar-curso/cargar-curso.component';
 
 
 const routes: Routes = [
@@ -59,7 +60,7 @@ const routes: Routes = [
   {
     path: 'crear-comentario/:idpub',
     component:CrearComentarioComponent,
-    component:CrearComentarioComponent,
+    
     canActivate: [AuthGuard]
   },
   {
@@ -69,6 +70,12 @@ const routes: Routes = [
   {
     path: 'Ver-Perfil/:VarC',
     component:VerperfilComponent
+  },
+  {
+    path: 'obtener-cursos',
+    component:CargarCursoComponent,
+    canActivate: [AuthGuard]
+
   }
 ];
 

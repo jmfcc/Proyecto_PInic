@@ -57,7 +57,7 @@ CREATE TABLE CursosAprobados(
 	idCursoPen INT NOT NULL,
 	NotaAprobada INT NOT NULL,
 	FOREIGN KEY (CarneUsuario) REFERENCES Usuario(Carne),
-	FOREIGN KEY (idCursoPen) REFERENCES Pensum(idCursoPensum),
+	FOREIGN KEY (idCursoPen) REFERENCES Pensum(idCursoPensum)
 	--PRIMARY KEY (CarneUsuario, idCursoPen)
 )
 GO

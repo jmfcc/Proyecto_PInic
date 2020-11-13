@@ -8,7 +8,8 @@ import { Publicacion } from '../models/publicacion';
 import { idPub } from '../models/idpub';
 import { comentario } from '../models/comentario';
 import { Usuario } from '../models/usuario-modelo';
-
+import { cargarDato } from '../models/cargar-curso';
+import { Aprobados } from '../models/aprobados';
 @Injectable()
 
 export class AuthService {
@@ -132,7 +133,22 @@ export class AuthService {
       Carnet:carnet
     });
   }
+  /******************************************CARGAR CURSO************************************************ */
+  cargarCurso(){
+    return this.httpClient.get("http://localhost:3000/kevin/obtener-cursos");
 
+  }
+  cargarCursoDatos(aprobados:cargarDato,datos:cargarDato){
+  
+    return this.httpClient.post("http://localhost:3000/kevin/cursos-aprovados",aprobados)
+    
+  }
+  obtenerCursosAprobados(carnet:number):Observable<Aprobados[]>{
+    return this.httpClient.post<Aprobados[]>("http://localhost:3000/alex/curso-realizados",{
+      Carnet:carnet
+    });
+  }
+  /************************************************************************************************** */
   modificarPerfil(carnet:number,nombre:string, apellido:string,correo:string){
     return this.httpClient.post("http://localhost:3000/alex/modificar-perfil",{
       Carnet:carnet,
@@ -142,4 +158,5 @@ export class AuthService {
     });
   }
 
+  
 }

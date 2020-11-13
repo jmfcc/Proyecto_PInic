@@ -7,13 +7,7 @@ var config = {
     host: 'localhost',
     user: 'admsc', //'alexwgd', //Este debe ser su usuario
     password: 'Bu7n03Cc', //'1234', // Esta debe ser su contraseña
-<<<<<<< HEAD
-   
-    port: 1433 ,
-    
-=======
     port: 1433
->>>>>>> f66465be9efd6c8d9bd784e361e7d0c47fc94752
 };
 
 class indexRoutes{
