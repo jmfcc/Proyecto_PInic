@@ -60,10 +60,6 @@ const routes: Routes = [
   {
     path: 'crear-comentario/:idpub',
     component:CrearComentarioComponent,
-<<<<<<< HEAD
-=======
-    
->>>>>>> c5455afd1b452cc661b29be32515705a14abd801
     canActivate: [AuthGuard]
   },
   {
@@ -73,18 +69,13 @@ const routes: Routes = [
   },
   {
     path: 'Ver-Perfil/:VarC',
-<<<<<<< HEAD
     component:VerperfilComponent,
     canActivate: [AuthGuard]
-=======
-    component:VerperfilComponent
   },
   {
     path: 'obtener-cursos',
     component:CargarCursoComponent,
     canActivate: [AuthGuard]
-
->>>>>>> c5455afd1b452cc661b29be32515705a14abd801
   }
 ];
 
