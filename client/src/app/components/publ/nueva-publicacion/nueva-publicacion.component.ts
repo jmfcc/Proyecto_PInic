@@ -40,7 +40,7 @@ export class NuevaPublicacionComponent implements OnInit {
     this.tipo = 1;
     this.authService.obtenerCursos().subscribe(
       res=>{
-        console.log(res);
+        console.log(res );
         this.cursos=res;
       },
       err=>{

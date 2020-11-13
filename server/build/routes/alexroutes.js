@@ -13,7 +13,7 @@ const express_1 = require("express");
 var mssql = require('mssql');
 var jwt = require('jsonwebtoken');
 var config = {
-    server: 'localhost',
+    server: 'KEVIN',
     host: 'localhost',
     user: 'admsc',
     password: 'Bu7n03Cc',
@@ -136,6 +136,7 @@ class alexRoutes {
         });
         /******************** POSTS ***************************/
         this.router.post('/crear-publicacion', (req, res) => {
+            console.log(req.body);
             jwt.verify(req.body.token, 'secretkey', (error, authData) => {
                 if (error) {
                     res.sendStatus(403);
@@ -147,6 +148,7 @@ class alexRoutes {
                         usuario: authData.resp.usuario,
                         codigo: req.body.codigo
                     };
+                    console.log(dataPubli.usuario);
                     var cadena = "";
                     if (dataPubli.tipo == 1) {
                         cadena = "INSERT INTO Publicacion(Mensaje, Tipo, Fecha, CarneUsuario,CodigoCurso) VALUES ('" + dataPubli.mensaje + "', " + dataPubli.tipo + ", GETDATE(), " + dataPubli.usuario + ", " + dataPubli.codigo + ")";
@@ -292,6 +294,9 @@ class alexRoutes {
                     };
                     var cadena = "SELECT Carne, Nombres, Apellidos, Correo FROM Usuario WHERE Carne=" + resp.carnet;
                     var con = new mssql.ConnectionPool(config);
+                    //AGREGADO POR KEVIN__CONTRERAS
+                    var cadena3 = "select Usuario.Carne, Curso.Nombre,Pensum.Creditos, CursosAprobados.NotaAprobada from Curso join Pensum on Pensum.CodigoCurso = Curso.Codigo join CursosAprobados on Pensum.idCursoPensum = CursosAprobados.idCursoPen join Usuario on CursosAprobados.CarneUsuario = Usuario.Carne where Usuario.Carne =" + "'" + resp.carnet + "'";
+                    //----------------------------------------------------------
                     con.connect(function (err) {
                         var req = new mssql.Request(con);
                         if (err) {
@@ -347,6 +352,26 @@ class alexRoutes {
                 catch (Exception) {
                     console.log(Exception);
                 }
+            });
+        });
+        this.router.post("/curso-realizados", function (req, res) {
+            var cadena3 = "select Usuario.Carne, Curso.Nombre,Pensum.Creditos, CursosAprobados.NotaAprobada from Curso join Pensum on Pensum.CodigoCurso = Curso.Codigo join CursosAprobados on Pensum.idCursoPensum = CursosAprobados.idCursoPen join Usuario on CursosAprobados.CarneUsuario = Usuario.Carne where Usuario.Carne =" + "'" + req.body.Carnet + "'";
+            var con = new mssql.ConnectionPool(config);
+            con.connect(function (err) {
+                var req = new mssql.Request(con);
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+                req.query(cadena3, function (err, recordset) {
+                    if (err) {
+                        console.log(err);
+                    }
+                    else {
+                        res.send(JSON.stringify(recordset));
+                    }
+                    con.close();
+                });
             });
         });
     }

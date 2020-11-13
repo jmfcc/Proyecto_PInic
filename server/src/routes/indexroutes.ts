@@ -3,7 +3,7 @@ var jwt = require ('jsonwebtoken');
 var mssql = require('mssql');
 
 var config = {
-    server: 'localhost',
+    server: 'KEVIN',
     host: 'localhost',
     user: 'admsc', //'alexwgd', //Este debe ser su usuario
     password: 'Bu7n03Cc', //'1234', // Esta debe ser su contraseña
@@ -112,12 +112,13 @@ class indexRoutes{
             try{
                 let resp=req.body;
                 console.log(resp)
+
                 if ((typeof resp.usuario == 'undefined') || (typeof resp.nombres == 'undefined') || (typeof resp.apellidos == 'undefined') || (typeof resp.contrasenia == 'undefined') || (typeof resp.correo == 'undefined')){
                     res.send({mensaje:"Datos incompletos"})
                 }else{
                     var cadena = "insert into Usuario values ("+resp.usuario
                     +",'"+resp.nombres+"','"+resp.apellidos +"','"+resp.contrasenia+"','"+resp.correo+"');";
-
+                        
                     var con = new mssql.ConnectionPool(config);
     
                     con.connect(function(err:any){

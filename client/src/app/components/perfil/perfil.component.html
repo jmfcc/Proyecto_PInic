@@ -1,7 +1,7 @@
 <app-home-navbar></app-home-navbar>
 
 <h1>Mi perfil </h1>
-<table *ngFor="let us of MiUsuario" style="width: 100%;">
+<table *ngFor="let us of MiUsuario"  style="width: 100%;">
     <tr>
         <td><h3>Carnet: </h3></td>
         <td><h4>{{us.Carne}}</h4></td>
@@ -39,7 +39,9 @@
         <td style="width: 50%;"></td>
           <td><button type="button" class="btn btn-outline-primary"(click)='Modificar()'>Modificar Usuario</button></td>
     </tr>
+
 </table>
 
 <button type="button" class="btn btn-outline-primary">Pensum</button>
-
+<button type="button" class="btn btn-outline-primary" style="margin-left: 20px;"><a href="/components/obtener-cursos">Cargar Curso</a> </button>
+<h2 id="creditos"></h2>

@@ -19,6 +19,7 @@ import { CrearComentarioComponent } from './publ/crear-comentario/crear-comentar
 import { PerfilComponent } from './perfil/perfil.component';
 import { VerperfilComponent } from './verperfil/verperfil.component';
 import { VerificarCorreoComponent } from './verificar-correo/verificar-correo.component';
+import { CargarCursoComponent } from './cargar-curso/cargar-curso.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { VerificarCorreoComponent } from './verificar-correo/verificar-correo.co
     PerfilComponent,
     VerperfilComponent,
     VerificarCorreoComponent,
+    CargarCursoComponent,
   ],
   imports: [
     CommonModule,
